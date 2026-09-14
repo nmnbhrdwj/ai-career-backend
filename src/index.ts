@@ -29,8 +29,8 @@ dotenv.config();
 connectDB().then(() => console.log("DB connected"));
 
 export const instance = new Razorpay({
-  key_id: process.env.Razorpay_Key!,
-  key_secret: process.env.Razorpay_Secret!,
+  key_id: process.env.Razorpay_Key || "rzp_test_dummyKey",
+  key_secret: process.env.Razorpay_Secret || "dummySecret",
 });
 
 const app = express();
@@ -44,6 +44,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/payment", paymentRoutes);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });

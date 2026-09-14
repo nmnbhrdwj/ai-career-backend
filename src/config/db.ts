@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI as string, {
+    const mongoUri = process.env.MONGO_URI || "mongodb+srv://namanbharadwaj888_db_user:hT6UxYlMjCFGPVv2@cluster0.wnr3wr6.mongodb.net/?appName=Cluster0";
+    await mongoose.connect(mongoUri, {
       dbName: "ai-career",
     });
 
