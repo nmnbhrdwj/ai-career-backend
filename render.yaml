@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: ai-career-backend
+    env: node
+    buildCommand: npm run build
+    startCommand: node dist/index.js
